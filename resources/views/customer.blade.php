@@ -69,9 +69,9 @@
                     <label for="">Gender</label>
                     <div class="custom-control custom-checkbox">
                     <label for="male">Male</label>
-                    <input type="radio" name="gender" id="male" value="M">
+                    <input type="radio" name="gender" id="male" value="Male">
                     <label for="female">Female</label>
-                    <input type="radio" name="gender" id="female" value="F">
+                    <input type="radio" name="gender" id="female" value="Female">
                       </div>
                     <span class="text-danger">
                         @error('gender')

@@ -92,5 +92,7 @@ Route::post('/register',[RegistrationController::class,'register']); // data ins
 //Insert Query to DB
 Route::get('/customer',[CustomerController::class,'index']); 
 Route::post('/customer',[CustomerController::class,'store']);
+Route::get('/customer/view',[CustomerController::class,'view']); 
+
 
 ?>
