@@ -120,6 +120,17 @@
                     </span>
                 </div>
 
+                
+                <div class="form-group mt-2">
+                    <label for="">Status</label>
+                    <input type="text" class="form-control" name="status" id=""/>
+                    <span class="text-danger">
+                        @error('status')
+                            {{$message}}
+                        @enderror
+                    </span>
+                </div>
+
                 <button class="btn btn-primary mt-2">Submit</button>
 
         </div>

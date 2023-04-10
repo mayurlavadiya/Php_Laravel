@@ -23,6 +23,7 @@ class CustomerController extends Controller
         $customer->state = $request['state'];
         $customer->country = $request['country'];
         $customer->dob = $request['dob'];
+        $customer->status = $request['status'];
         $customer->password = md5($request['password']);
         $customer->save();
         
