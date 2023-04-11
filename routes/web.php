@@ -90,9 +90,12 @@ Route::post('/register',[RegistrationController::class,'register']); // data ins
 // });
 
 //Insert Query to DB
-Route::get('/customer',[CustomerController::class,'index']); 
+Route::get('/', [DemoController::class,'index'])->name('home');
+Route::get('/customer',[CustomerController::class,'index'])->name('customer.add'); 
 Route::post('/customer',[CustomerController::class,'store']);
-Route::get('/customer/view',[CustomerController::class,'view']); 
+Route::get('/customer/delete/{id}', [CustomerController::class,'delete'])->name('customer.delete'); // id ne hit krva mate id add kryu
+Route::get('/customer/edit/{id}', [CustomerController::class,'edit'])->name('customer.edit'); // id ne hit krva mate id add kryu
+Route::get('/customer/view',[CustomerController::class,'view'])->name('customer.view'); 
 
 
 ?>

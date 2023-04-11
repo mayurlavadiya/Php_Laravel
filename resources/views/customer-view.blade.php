@@ -1,3 +1,4 @@
+@include('layouts.header')
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,7 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-      <div class="container">
+    <h1 class="text-center">View Customers</h1>
+   
+      <div class="container mt-2">
         <table class="table">
             <thead>
                 <tr>
@@ -23,6 +26,7 @@
                     <th>State</th>
                     <th>Country</th>
                     <th>Status</th>
+                    <th >Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,11 +41,24 @@
                     <td>{{$value->state}}</td>
                     <td>{{$value->country}}</td>
                     <td>
-                        @if($value->status=="1")
-                        Active
+                        @if($value->status=="1")   
+                        <a href="">                     
+                        <span class="badge badge-success">Active</span>  
+                        </a>    
                         @else
-                        Inactive
+                        <a href="">                     
+                            <span class="badge badge-danger">InActive</span>  
+                        </a>    
                         @endif
+                    </td>
+                       <td>
+                        <a href="{{url('/customer/edit')}}/{{$value->customer_id}}"><a href="">
+                            <button class="btn btn-primary"> EDIT</button>
+                        </a>
+                    </td>
+                        <td><a href="{{url('/customer/delete/')}}/{{$value->customer_id}}">
+                            <button class="btn btn-danger"> DELETE</button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

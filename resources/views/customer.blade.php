@@ -1,6 +1,7 @@
+@include('layouts.header')
+
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +20,7 @@
         @csrf
          
         <div class="container">
-            <h1 class="text-center">Customer Form</h1>
+            <h1 class="text-center">Registration Form</h1>
             
             {{-- 1. Old method form field (comment krel chhe)--}} 
             

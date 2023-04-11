@@ -36,6 +36,32 @@ class CustomerController extends Controller
         $customers = Customers::all();
         $data = compact('customers'); // compact function variable no array bnavine push kri desee
         return view('customer-view')->with($data);
+        echo $data;
+    }
 
+    public function delete($id){
+        //Method1
+       $customers = Customers::find($id)->delete(); // find primary key ne match krse
+       return redirect()->back();
+       
+       //Method2
+    //    $customers = Customers::find($id); // find primary key ne match krse
+    //    if(!is_null($customers)){
+    //         $customers->delete();
+    //    }
+    //    return redirect('customer/view');  
+
+    }
+
+    public function edit($id){
+        $customers = Customers::find($id);
+        if (is_null($customers)){
+            //not found id
+            return redirect('customer/view');  
+        }else{
+            //found
+            $data = compact('customers'); 
+            return view('customer')->with($data);
+        }
     }
 }
