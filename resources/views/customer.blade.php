@@ -20,7 +20,9 @@
         @csrf
          
         <div class="container">
-            <h1 class="text-center">Registration Form</h1>
+            <h1 class="text-center">
+                {{$title}}
+            </h1>
             
             {{-- 1. Old method form field (comment krel chhe)--}} 
             

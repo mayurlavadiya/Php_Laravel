@@ -9,7 +9,11 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('customer');
+        $url = url('/customer');
+        $title = "Customer Registration";
+        $data = compact('url','title');
+        return view('customer')->with($data);
+
     }
 
     public function store(Request $request)
@@ -59,9 +63,12 @@ class CustomerController extends Controller
             //not found id
             return redirect('customer/view');  
         }else{
-            //found
-            $data = compact('customers'); 
-            return view('customer')->with($data);
+            //if found id 
+            //url make for update
+            $title = "Update Customer";
+            $url = url('/customer/update') ."/". $id;
+            $data = compact('customers','url','title');  // ek varibale ma data store
+            return view('customer',["data"=>$data]); // data pass krava - array pass karyo
         }
     }
 }
