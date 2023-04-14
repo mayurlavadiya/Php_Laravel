@@ -19,17 +19,17 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         // Insert Query
-        $customer = new Customers;
-        $customer->name = $request->name;
-        $customer->email = $request['email'];
-        $customer->gender = $request->gender;
-        $customer->address = $request['address'];
-        $customer->state = $request['state'];
-        $customer->country = $request['country'];
-        $customer->dob = $request['dob'];
-        $customer->status = $request['status'];
-        $customer->password = md5($request['password']);
-        $customer->save();
+        $customers = new Customers;
+        $customers->name = $request->name;
+        $customers->email = $request['email'];
+        $customers->gender = $request->gender;
+        $customers->address = $request['address'];
+        $customers->state = $request['state'];
+        $customers->country = $request['country'];
+        $customers->dob = $request['dob'];
+        $customers->status = $request['status'];
+        $customers->password = md5($request['password']);
+        $customers->save();
         
         //Redirect after insert data to view page to show the data
         return redirect('/customer/view');
@@ -65,10 +65,25 @@ class CustomerController extends Controller
         }else{
             //if found id 
             //url make for update
+            // $title = "Update Customer";
+            $url = url('/customer/update')."/". $id;
             $title = "Update Customer";
-            $url = url('/customer/update') ."/". $id;
             $data = compact('customers','url','title');  // ek varibale ma data store
-            return view('customer',["data"=>$data]); // data pass krava - array pass karyo
+            return view('customer')->with($data); // data pass krava - array pass karyo
         }
+    }
+
+    public function update($id, Request $request){
+        $customers = Customers::find($id);
+        $customers->name = $request->name;
+        $customers->email = $request->email;
+        $customers->gender = $request->gender;
+        $customers->address = $request->address;
+        $customers->state = $request->state;
+        $customers->country = $request->country;
+        $customers->dob = $request->dob;
+        $customers->status = $request->status;
+        $customers->save();
+        return redirect('customer/view');  
     }
 }

@@ -95,9 +95,9 @@ Route::get('/customer',[CustomerController::class,'index'])->name('customer.add'
 Route::post('/customer',[CustomerController::class,'store']);
 Route::get('/customer/delete/{id}', [CustomerController::class,'delete'])->name('customer.delete'); // id ne hit krva mate id add kryu
 Route::get('/customer/edit/{id}', [CustomerController::class,'edit'])->name('customer.edit'); // id ne hit krva mate id add kryu
-//update data mate
-Route::get('/customer/update/{id}', [CustomerController::class,'update'])->name('customer.update'); // id ne hit krva mate id add kryu
 
+//update data mate
+Route::post('/customer/update/{id}', [CustomerController::class,'update'])->name('customer.update'); // id ne hit krva mate id add kryu
 Route::get('/customer/view',[CustomerController::class,'view'])->name('customer.view'); 
 
 

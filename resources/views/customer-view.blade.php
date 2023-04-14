@@ -51,11 +51,9 @@
                         </a>    
                         @endif
                     </td>
-                       <td>
-                        <a href="{{route('customer.edit',$value->customer_id)}}"> 
-                            <button class="btn btn-primary"> EDIT</button>
-                        </a>
-                    </td>
+                        <td><a href="{{url('/customer/edit/')}}/{{$value->customer_id}}">
+                                <button class="btn btn-primary"> EDIT</button>                            
+                            </a>
                         <td><a href="{{url('/customer/delete/')}}/{{$value->customer_id}}">
                             <button class="btn btn-danger"> DELETE</button>                            
                         </a>

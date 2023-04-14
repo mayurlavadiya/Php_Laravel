@@ -1,5 +1,4 @@
 @include('layouts.header')
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,10 +15,10 @@
     </script>
 
     {{-- base url mate {{url}} use thay --}}
-    <form action="{{url('/')}}/customer" method="post"> 
+    <form action={{$url}} method="post"> 
         @csrf
          
-        <div class="container">
+        <div class="container"> 
             <h1 class="text-center">
                 {{$title}}
             </h1>
@@ -29,9 +28,9 @@
                 <div class="form-row">
                     <div class="col">
                     <label for="">Name</label>
-                    <input type="name" class="form-control" name="name" id="" value="{{old('name')}}"/>
+                    <input type="name" class="form-control" name="name" value="{{$customers->name}}"/>
                     <span class="text-danger">
-                        @error('name')
+                        @error('name')  
                             {{$message}}
                         @enderror
                     </span>
@@ -40,7 +39,7 @@
 
                 <div class="form-group mt-2">
                     <label for="">Email</label>
-                    <input type="email" class="form-control" name="email" id="" value="{{old('email')}}"/>
+                    <input type="email" class="form-control" name="email" id="" value="{{$customers->email}}"/>
                     <span class="text-danger">
                         @error('email')
                             {{$message}}
@@ -72,9 +71,12 @@
                     <label for="">Gender</label>
                     <div class="custom-control custom-checkbox">
                     <label for="male">Male</label>
-                    <input type="radio" name="gender" id="male" value="Male">
+                    <input type="radio" name="gender" id="male" value="Male"
+                         {{$customers->gender=="Male" ? "checked" : ""}}>
                     <label for="female">Female</label>
                     <input type="radio" name="gender" id="female" value="Female">
+                         {{$customers->gender=="Female" ? "checked" : ""}}
+
                       </div>
                     <span class="text-danger">
                         @error('gender')
@@ -85,7 +87,7 @@
 
                 <div class="form-group mt-2">
                     <label for="">State</label>
-                    <input type="text" class="form-control" name="state" id=""/>
+                    <input type="text" class="form-control" name="state" id="" value="{{$customers->state}}"/>
                     <span class="text-danger">
                         @error('state')
                             {{$message}}
@@ -95,7 +97,7 @@
 
                 <div class="form-group mt-2">
                     <label for="">Country</label>
-                    <input type="text" class="form-control" name="country" id=""/>
+                    <input type="text" class="form-control" name="country" id="" value="{{$customers->country}}"/>
                     <span class="text-danger">
                         @error('country')
                             {{$message}}
@@ -105,7 +107,7 @@
 
                 <div class="form-group mt-2">
                     <label for="">Date of Birth</label>
-                    <input type="date" class="form-control" name="dob" id=""/>
+                    <input type="date" class="form-control" name="dob" id="" value="{{$customers->dob}}"/>
                     <span class="text-danger">
                         @error('address')
                             {{$message}}
@@ -115,7 +117,7 @@
 
                 <div class="form-group mt-2">
                     <label for="">Address</label>
-                    <input type="text" class="form-control" name="address" id=""/>
+                    <input type="text" class="form-control" name="address" id="" value="{{$customers->address}}"/>
                     <span class="text-danger">
                         @error('address')
                             {{$message}}
@@ -126,7 +128,7 @@
                 
                 <div class="form-group mt-2">
                     <label for="">Status</label>
-                    <input type="text" class="form-control" name="status" id=""/>
+                    <input type="text" class="form-control" name="status" id="" value="{{$customers->status}}"/>
                     <span class="text-danger">
                         @error('status')
                             {{$message}}
