@@ -12,4 +12,8 @@ class Customers extends Model
     protected $table = "customers";
     protected $primaryKey = "customer_id";    
 
+    public function setNameAttribute($value){
+        $this->attributes['name'] = ucwords($vaue); // UPPERCASE WORD
+    }
+
 }

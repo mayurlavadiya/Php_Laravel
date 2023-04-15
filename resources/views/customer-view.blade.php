@@ -35,7 +35,7 @@
                     <td>{{$value->name}}</td>
                     <td>{{$value->email}}</td>
                     <td>{{$value->gender}}</td>
-                    <td>{{$value->dob}}</td>
+                    <td>{{get_formatted_date($value->dob,"d-M-Y")}}</td>
                     <td>{{$value->address}}</td>
                     <td>{{$value->city}}</td>
                     <td>{{$value->state}}</td>
