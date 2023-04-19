@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>View Data</title>
+    <title>Customer Trash Data</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +26,7 @@
                     <th>State</th>
                     <th>Country</th>
                     <th>Status</th>
-                    <th class="text-center" >Action</th>
+                    <th >Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,12 +51,11 @@
                         </a>    
                         @endif
                     </td>
-                    <td>
-                        <a href="{{url('/customer/edit/')}}/{{$value->customer_id}}">
-                            <button class="btn btn-primary"> Edit </button>                            
-                        </a>
-                        <a href="{{url('/customer/delete/')}}/{{$value->customer_id}}">
-                            <button class="btn btn-danger"> Move To Trash</button>                            
+                        <td><a href="{{url('/customer/edit/')}}/{{$value->customer_id}}">
+                                <button class="btn btn-primary"> Restore </button>                            
+                            </a>
+                        <td><a href="{{url('/customer/delete/')}}/{{$value->customer_id}}">
+                            <button class="btn btn-danger"> Delete</button>                            
                         </a>
                     </td>
                 </tr>

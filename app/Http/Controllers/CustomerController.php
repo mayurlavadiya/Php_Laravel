@@ -24,6 +24,7 @@ class CustomerController extends Controller
         $customers->email = $request['email'];
         $customers->gender = $request->gender;
         $customers->address = $request['address'];
+        $customers->city = $request['city'];
         $customers->state = $request['state'];
         $customers->country = $request['country'];
         $customers->dob = $request['dob'];
@@ -40,7 +41,14 @@ class CustomerController extends Controller
         $customers = Customers::all();
         $data = compact('customers'); // compact function variable no array bnavine push kri desee
         return view('customer-view')->with($data);
-        echo $data;
+        // echo $data;
+    }
+
+    public function trash(){
+
+        $customers = Customers::onlyTrashed()->all();
+        $data = compact('customers'); // compact function variable no array bnavine push kri desee
+        return view('customer-trash')->with($data);
     }
 
     public function delete($id){
@@ -81,6 +89,7 @@ class CustomerController extends Controller
         $customers->address = $request->address;
         $customers->state = $request->state;
         $customers->country = $request->country;
+        $customers->city = $request->city;
         $customers->dob = $request->dob;
         $customers->status = $request->status;
         $customers->save();

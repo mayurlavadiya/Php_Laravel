@@ -6,6 +6,8 @@ use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\CustomerController;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -100,5 +102,30 @@ Route::get('/customer/edit/{id}', [CustomerController::class,'edit'])->name('cus
 Route::post('/customer/update/{id}', [CustomerController::class,'update'])->name('customer.update'); // id ne hit krva mate id add kryu
 Route::get('/customer/view',[CustomerController::class,'view'])->name('customer.view'); 
 
+//session
+Route::get('get-all-session',function(){
+    $session = session()->all(); // session mathi bdho data retry krva mate global functon
+    p($session);
+});
+
+//session ma potani rite value moklva mate
+Route::get('set-session',function(Request $request){
+    $request->session()->put('user-name','Mayur');
+    $request->session()->put('user-id','12345');
+    return redirect('get-all-session');    
+});
+
+//delete data using session
+Route::get('destroy-session', function(){
+    session()->forget('user-name'); // 1st method alag alag value mate 
+    session()->forget('user-id');
+    // session()->forget(['user-name','user-id']);    ---- 2nd method - eksathe
+
+    return redirect('get-all-session');    
+});
+
+
+Route::get('/customer/trash',[CustomerController::class,'view']); 
 
 ?>
+ 

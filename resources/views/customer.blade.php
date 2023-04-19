@@ -85,26 +85,7 @@
                     </span>
                 </div>
 
-                <div class="form-group mt-2">
-                    <label for="">State</label>
-                    <input type="text" class="form-control" name="state" id="" value="{{$customers->state}}"/>
-                    <span class="text-danger">
-                        @error('state')
-                            {{$message}}
-                        @enderror
-                    </span>
-                </div>
-
-                <div class="form-group mt-2">
-                    <label for="">Country</label>
-                    <input type="text" class="form-control" name="country" id="" value="{{$customers->country}}"/>
-                    <span class="text-danger">
-                        @error('country')
-                            {{$message}}
-                        @enderror
-                    </span>
-                </div>
-
+               
                 <div class="form-group mt-2">
                     <label for="">Date of Birth</label>
                     <input type="date" class="form-control" name="dob" id="" value="{{$customers->dob}}"/>
@@ -124,7 +105,36 @@
                         @enderror
                     </span>
                 </div>
-
+                
+                <div class="form-group mt-2">
+                    <label for="">City</label>
+                    <input type="text" class="form-control" name="city" id="" value="{{$customers->city}}"/>
+                    <span class="text-danger">
+                        @error('address')
+                            {{$message}}
+                        @enderror
+                    </span>
+                </div>
+                        <div class="form-group mt-2">
+                            <label for="">State</label>
+                            <input type="text" class="form-control" name="state" id="" value="{{$customers->state}}"/>
+                            <span class="text-danger">
+                                @error('state')
+                                    {{$message}}
+                                @enderror
+                            </span>
+                        </div>
+        
+                        <div class="form-group mt-2">
+                            <label for="">Country</label>
+                            <input type="text" class="form-control" name="country" id="" value="{{$customers->country}}"/>
+                            <span class="text-danger">
+                                @error('country')
+                                    {{$message}}
+                                @enderror
+                            </span>
+                        </div>
+        
                 
                 <div class="form-group mt-2">
                     <label for="">Status</label>
