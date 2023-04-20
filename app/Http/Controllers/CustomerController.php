@@ -11,9 +11,9 @@ class CustomerController extends Controller
     {
         $url = url('/customer');
         $title = "Customer Registration";
-        $data = compact('url','title');
-        return view('customer')->with($data);
-
+        // $customers = Customers::find;
+        // $customers = compact('url','title');
+        return view('customer',compact('url','title'));
     }
 
     public function store(Request $request)
@@ -46,9 +46,18 @@ class CustomerController extends Controller
 
     public function trash(){
 
-        $customers = Customers::onlyTrashed()->all();
+        $customers = Customers::onlyTrashed()->get();
         $data = compact('customers'); // compact function variable no array bnavine push kri desee
         return view('customer-trash')->with($data);
+    }
+
+    public function restore($id){
+        $customers = Customers::withTrashed()->find($id); // find primary key ne match krse
+       if(!is_null($customers)){
+            $customers->restore();
+       }
+       return redirect('customer/view');  
+  
     }
 
     public function delete($id){
@@ -65,6 +74,18 @@ class CustomerController extends Controller
 
     }
 
+    public function forcedelete($id){
+       
+       //Method2
+       $customers = Customers::withTrashed()->find($id); // find primary key ne match krse
+       if(!is_null($customers)){
+            $customers->forcedelete();
+       }
+       return redirect('customer/view');  
+
+    }
+
+
     public function edit($id){
         $customers = Customers::find($id);
         if (is_null($customers)){
@@ -77,7 +98,9 @@ class CustomerController extends Controller
             $url = url('/customer/update')."/". $id;
             $title = "Update Customer";
             $data = compact('customers','url','title');  // ek varibale ma data store
-            return view('customer')->with($data); // data pass krava - array pass karyo
+            return view('customer-edit')->with($data); // data pass krava - array pass karyo
+        //  return redirect('customer/');  
+
         }
     }
 

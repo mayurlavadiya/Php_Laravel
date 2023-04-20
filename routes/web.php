@@ -97,6 +97,7 @@ Route::get('/customer',[CustomerController::class,'index'])->name('customer.add'
 Route::post('/customer',[CustomerController::class,'store']);
 Route::get('/customer/delete/{id}', [CustomerController::class,'delete'])->name('customer.delete'); // id ne hit krva mate id add kryu
 Route::get('/customer/edit/{id}', [CustomerController::class,'edit'])->name('customer.edit'); // id ne hit krva mate id add kryu
+Route::post('/customer/edit/{id}', [CustomerController::class,'edit'])->name('customer.edit'); // id ne hit krva mate id add kryu
 
 //update data mate
 Route::post('/customer/update/{id}', [CustomerController::class,'update'])->name('customer.update'); // id ne hit krva mate id add kryu
@@ -125,7 +126,10 @@ Route::get('destroy-session', function(){
 });
 
 
-Route::get('/customer/trash',[CustomerController::class,'view']); 
+Route::get('/customer/trash',[CustomerController::class,'trash']); 
+Route::get('/customer/restore/{id}', [CustomerController::class,'restore'])->name('customer.restore'); 
+Route::get('/customer/forcedelete/{id}', [CustomerController::class,'forcedelete'])->name('customer.forcedelete'); // id ne hit krva mate id add kryu
+
 
 ?>
  

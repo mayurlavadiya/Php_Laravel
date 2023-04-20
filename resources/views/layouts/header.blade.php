@@ -23,9 +23,14 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{route("customer.add")}}">Add</a>
                 </li>
+
                 <li class="nav-item">
                   <a class="nav-link" href="{{route("customer.view")}}">View</a>
-                </li>               
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url("customer/trash")}}">Go To Trash</a>
+                </li>
               </ul>          
             </div>
           </nav>

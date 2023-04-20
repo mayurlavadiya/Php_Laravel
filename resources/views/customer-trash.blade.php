@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <h1 class="text-center">View Customers</h1>
+    <h1 class="text-center">Customers Trash Data</h1>
    
       <div class="container mt-2">
         <table class="table">
@@ -26,7 +26,7 @@
                     <th>State</th>
                     <th>Country</th>
                     <th>Status</th>
-                    <th >Action</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,10 +51,10 @@
                         </a>    
                         @endif
                     </td>
-                        <td><a href="{{url('/customer/edit/')}}/{{$value->customer_id}}">
-                                <button class="btn btn-primary"> Restore </button>                            
+                        <td><a href="{{route('customer.restore', ['id' => $value->customer_id])}}">
+                                <button class="btn btn-success"> Restore </button>                            
                             </a>
-                        <td><a href="{{url('/customer/delete/')}}/{{$value->customer_id}}">
+                       <a href="{{route('customer.forcedelete', ['id' => $value->customer_id])}}">
                             <button class="btn btn-danger"> Delete</button>                            
                         </a>
                     </td>
