@@ -31,7 +31,7 @@ class CustomerController extends Controller
         $customers->status = $request['status'];
         $customers->password = md5($request['password']);
         $customers->save();
-        
+
         //Redirect after insert data to view page to show the data
         return redirect('/customer/view');
     }
@@ -56,32 +56,32 @@ class CustomerController extends Controller
        if(!is_null($customers)){
             $customers->restore();
        }
-       return redirect('customer/view');  
-  
+       return redirect('customer/view');
+
     }
 
     public function delete($id){
         //Method1
        $customers = Customers::find($id)->delete(); // find primary key ne match krse
        return redirect()->back();
-       
+
        //Method2
     //    $customers = Customers::find($id); // find primary key ne match krse
     //    if(!is_null($customers)){
     //         $customers->delete();
     //    }
-    //    return redirect('customer/view');  
+    //    return redirect('customer/view');
 
     }
 
     public function forcedelete($id){
-       
+
        //Method2
        $customers = Customers::withTrashed()->find($id); // find primary key ne match krse
        if(!is_null($customers)){
             $customers->forcedelete();
        }
-       return redirect('customer/view');  
+       return redirect('customer/view');
 
     }
 
@@ -90,16 +90,16 @@ class CustomerController extends Controller
         $customers = Customers::find($id);
         if (is_null($customers)){
             //not found id
-            return redirect('customer/view');  
+            return redirect('customer/view');
         }else{
-            //if found id 
+            //if found id
             //url make for update
             // $title = "Update Customer";
             $url = url('/customer/update')."/". $id;
             $title = "Update Customer";
             $data = compact('customers','url','title');  // ek varibale ma data store
             return view('customer-edit')->with($data); // data pass krava - array pass karyo
-        //  return redirect('customer/');  
+        //  return redirect('customer/');
 
         }
     }
@@ -116,6 +116,6 @@ class CustomerController extends Controller
         $customers->dob = $request->dob;
         $customers->status = $request->status;
         $customers->save();
-        return redirect('customer/view');  
+        return redirect('customer/view');
     }
 }

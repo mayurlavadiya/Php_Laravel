@@ -12,15 +12,33 @@
   </head>
   <body>
     <h1 class="text-center">View Customers</h1>
-   
-      <div class="container mt-2">
+
+    <div class="container">
+        <div class="row m-2">
+            <form action="">
+                <div class="form-group">
+                  <input type="text" name="" id="" class="form-control" placeholder="Search" aria-describedby="helpId">
+                </div>
+            </form>
+            <div class="col">
+                <a href="{{url('customer/trash')}}">
+                <button class="btn btn-danger d-inline-block ml-2 float-right">Go To Trash</button>
+                </a>
+                <a href="{{Route('customer.add')}}">
+                    <button class="btn btn-primary d-inline-block ml-2 float-right">Add</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+      <div class="container mt-3">
         <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
-                    <th>Birth Date</th>
+                    <th class="text-truncate">Birth Date</th>
                     <th>Address</th>
                     <th>City</th>
                     <th>State</th>
@@ -30,33 +48,30 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($customers as $value)                    
+                @foreach ($customers as $value)
                 <tr>
                     <td>{{$value->name}}</td>
                     <td>{{$value->email}}</td>
                     <td>{{$value->gender}}</td>
-                    <td>{{get_formatted_date($value->dob,"d-M-Y")}}</td>
+                    <td class="text-truncate">{{get_formatted_date($value->dob,"d-M-Y")}}</td>
                     <td>{{$value->address}}</td>
                     <td>{{$value->city}}</td>
                     <td>{{$value->state}}</td>
                     <td>{{$value->country}}</td>
                     <td>
-                        @if($value->status=="1")   
-                        <a href="">                     
-                        <span class="badge badge-success">Active</span>  
-                        </a>    
+                        @if($value->status=="1")
+
+                        <span class="badge badge-success">Active</span>
                         @else
-                        <a href="">                     
-                            <span class="badge badge-danger">InActive</span>  
-                        </a>    
+                            <span class="badge badge-danger">InActive</span>
                         @endif
                     </td>
-                    <td>
+                    <td class="col text-center">
                         <a href="{{url('/customer/edit/')}}/{{$value->customer_id}}">
-                            <button class="btn btn-primary"> Edit </button>                            
+                            <button class="btn btn-primary"> Edit </button>
                         </a>
                         <a href="{{url('/customer/delete/')}}/{{$value->customer_id}}">
-                            <button class="btn btn-danger"> Move To Trash</button>                            
+                            <button class="btn btn-danger"> Move To Trash</button>
                         </a>
                     </td>
                 </tr>

@@ -19,7 +19,7 @@ class CustomerSeeder extends Seeder
             $customers = new Customers;
             $customers->name = $faker->name;
             $customers->email = $faker->email;
-            $customers->gender = "Male";
+            $customers->gender = "M";
             $customers->address = $faker->address;
             $customers->city = $faker->city;
             $customers->state = $faker->state;
