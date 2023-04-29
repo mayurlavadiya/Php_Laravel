@@ -14,7 +14,7 @@
     <div class="container mt-2">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <b><a class="navbar-brand">Laravel</a></b>
-          
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -27,11 +27,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{route("customer.view")}}">View</a>
                 </li>
-                
+
                 <li class="nav-item">
                   <a class="nav-link" href="{{url("customer/trash")}}">Go To Trash</a>
                 </li>
-              </ul>          
+              </ul>
             </div>
           </nav>
     </div>

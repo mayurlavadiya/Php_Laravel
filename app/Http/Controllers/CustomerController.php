@@ -36,10 +36,24 @@ class CustomerController extends Controller
         return redirect('/customer/view');
     }
 
-    public function view(){
-        //return view page ma krva mate
-        $customers = Customers::all();
-        $data = compact('customers'); // compact function variable no array bnavine push kri desee
+    public function view(Request $request)
+    {
+        $search = $request['search'] ?? ""; // value hoi to search baki khali
+        if($search != ""){
+            //where clause
+            $customers = Customers::where('name','LIKE',"%$search%")
+            ->orwhere('email','LIKE',"%$search%")
+            ->orwhere('address','LIKE',"%$search%")
+            ->orwhere('city','LIKE',"%$search%")
+            ->orwhere('state','LIKE',"%$search%")
+            ->orwhere('country','LIKE',"%$search%")
+            ->get();
+        }else{
+
+            //return view page ma krva mate
+            $customers = Customers::all();
+        }
+        $data = compact('customers','search'); // compact function variable no array bnavine push kri desee
         return view('customer-view')->with($data);
         // echo $data;
     }
