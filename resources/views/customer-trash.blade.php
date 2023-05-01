@@ -12,8 +12,8 @@
   </head>
   <body>
     <h1 class="text-center">Customers Trash Data</h1>
-   
-      <div class="container mt-2">
+
+      <div class="container-fluid mt-2">
         <table class="table">
             <thead>
                 <tr>
@@ -24,13 +24,13 @@
                     <th>Address</th>
                     <th>City</th>
                     <th>State</th>
-                    <th>Country</th>
+                    {{-- <th>Country</th> --}}
                     <th>Status</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($customers as $value)                    
+                @foreach ($customers as $value)
                 <tr>
                     <td>{{$value->name}}</td>
                     <td>{{$value->email}}</td>
@@ -39,23 +39,23 @@
                     <td>{{$value->address}}</td>
                     <td>{{$value->city}}</td>
                     <td>{{$value->state}}</td>
-                    <td>{{$value->country}}</td>
+                    {{-- <td>{{$value->country}}</td> --}}
                     <td>
-                        @if($value->status=="1")   
-                        <a href="">                     
-                        <span class="badge badge-success">Active</span>  
-                        </a>    
+                        @if($value->status=="1")
+                        <a href="">
+                        <span class="badge badge-success">Active</span>
+                        </a>
                         @else
-                        <a href="">                     
-                            <span class="badge badge-danger">InActive</span>  
-                        </a>    
+                        <a href="">
+                            <span class="badge badge-danger">InActive</span>
+                        </a>
                         @endif
                     </td>
                         <td><a href="{{route('customer.restore', ['id' => $value->customer_id])}}">
-                                <button class="btn btn-success"> Restore </button>                            
+                                <button class="btn btn-success"> Restore </button>
                             </a>
                        <a href="{{route('customer.forcedelete', ['id' => $value->customer_id])}}">
-                            <button class="btn btn-danger"> Delete</button>                            
+                            <button class="btn btn-danger"> Delete</button>
                         </a>
                     </td>
                 </tr>

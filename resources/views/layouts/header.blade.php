@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="container mt-2">
+    <div class="container-fluid mt-2">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <b><a class="navbar-brand">Laravel</a></b>
 

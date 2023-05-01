@@ -18,7 +18,7 @@
     <form action={{$url}} method="post">
         @csrf
 
-        <div class="container">
+        <div class="container-fluid">
             <h1 class="text-center">
                 {{$title}}
             </h1>

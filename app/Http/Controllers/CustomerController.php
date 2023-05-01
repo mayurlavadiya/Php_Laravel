@@ -49,9 +49,9 @@ class CustomerController extends Controller
             ->orwhere('country','LIKE',"%$search%")
             ->get();
         }else{
-
             //return view page ma krva mate
-            $customers = Customers::all();
+                // $customers = Customers::get();
+            $customers = Customers::paginate(10);
         }
         $data = compact('customers','search'); // compact function variable no array bnavine push kri desee
         return view('customer-view')->with($data);

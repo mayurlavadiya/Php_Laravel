@@ -1,4 +1,5 @@
 @include('layouts.header')
+<?php $i=0; ?>
 <!doctype html>
 <html lang="en">
 
@@ -16,15 +17,18 @@
 <body>
     <h1 class="text-center">View Customers</h1>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <form action="" class="col-9">
                 <div class="form">
                     <input type="search" name="search" id="" class="form-control" placeholder="Search"
                         value="{{ $search }}">
                 </div>
+                <button class="btn btn-warning mt-2">Search</button>
+                <a href="{{url('/customer/view')}}">
+                <button class="btn btn-dark mt-2" type="button">Reset</button>
+                </a>
             </form>
-            <button class="btn btn-warning col-3">Search</button>
 
             <div class="mt-2 col">
                 <a href="{{ url('customer/trash') }}">
@@ -40,6 +44,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>SR</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Gender</th>
@@ -55,6 +60,7 @@
                 <tbody>
                     @foreach ($customers as $value)
                         <tr>
+                            <td>{{$i=$i+1}}</td>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
                             <td>{{ $value->gender }}</td>
@@ -72,17 +78,19 @@
                             </td>
                             <td class="col text-center">
                                 <a href="{{ url('/customer/edit/') }}/{{ $value->customer_id }}">
-                                    <button class="btn btn-primary"> Edit </button>
+                                    <button class="btn btn-primary mt-2"> Edit </button>
                                 </a>
                                 <a href="{{ url('/customer/delete/') }}/{{ $value->customer_id }}">
-                                    <button class="btn btn-danger"> Move To Trash</button>
+                                    <button class="btn btn-danger mt-2"> Move To Trash</button>
                                 </a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
+    </div>
+    <div class="text-center">
+             {{$customers->links('pagination::bootstrap-5')}}
     </div>
 </body>
 
