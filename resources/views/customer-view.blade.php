@@ -1,5 +1,4 @@
 @include('layouts.header')
-<?php $i=0; ?>
 <!doctype html>
 <html lang="en">
 
@@ -58,9 +57,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                @php
+                    $i = 1;
+                @endphp
                     @foreach ($customers as $value)
                         <tr>
-                            <td>{{$i=$i+1}}</td>
+                            <td>{{$i}}</td>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
                             <td>{{ $value->gender }}</td>
@@ -85,6 +87,9 @@
                                 </a>
                             </td>
                         </tr>
+                        @php
+                            $i++;
+                        @endphp
                     @endforeach
                 </tbody>
             </table>

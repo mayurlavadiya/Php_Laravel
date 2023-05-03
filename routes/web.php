@@ -27,23 +27,23 @@ use Illuminate\Http\Request;
 // GET METHOD : URL mate
 // Route::get('/demo', function(){ // Route class chhe get method chhe
 //     echo "Hello World";
-// }); 
+// });
 
 // POST METHOD : data store mate
 // Route::post('/test', function(){ // Route class chhe post method chhe
 //     echo "Route Testing";
-// }); 
+// });
 
-// Route::get('/demo', function(){ 
-//     return view('demo'); 
-// }); 
+// Route::get('/demo', function(){
+//     return view('demo');
+// });
 
 // GET K POST Koi b method thi leva mate
-// Route::any('/test', function(){ 
+// Route::any('/test', function(){
 //     echo "Route Testing by any....";
-// }); 
+// });
 
-// PUT METHOD : 
+// PUT METHOD :
 // Route::put('users/{/id}',function($id){
 // });
 
@@ -61,18 +61,18 @@ use Illuminate\Http\Request;
 
 
 // Route::get('/', function(){
-//     return view('layouts/home'); 
+//     return view('layouts/home');
 //  });
 
 // Route::get('/about', function(){
-//     return view('about'); 
+//     return view('about');
 //  });
 
-// controller ni help thi redirect krva page pr 
+// controller ni help thi redirect krva page pr
 Route::get('/', [DemoController::class,'index']); // Democontroller ma index name na class ni madad thi home vada page ma jase...
 
 // controller ni help thi redirect krva page pr - 2nd method
-Route::get('/about','App\Http\Controllers\DemoController@about'); // akhi namespace btavo to j 
+Route::get('/about','App\Http\Controllers\DemoController@about'); // akhi namespace btavo to j
 
 //Single Action controller thi route krva mate
 Route::get('/course',SingleActionController::class);
@@ -80,8 +80,8 @@ Route::get('/course',SingleActionController::class);
 //Resource controller - readymade routes and resources which can be predefinned at a controller making time
 Route::resource('photo',PhotoController::class);
 
-// Form routes mate 
-Route::get('/register',[RegistrationController::class,'index']); 
+// Form routes mate
+Route::get('/register',[RegistrationController::class,'index']);
 Route::post('/register',[RegistrationController::class,'register']); // data insert mate
 
 //table and database
@@ -93,15 +93,17 @@ Route::post('/register',[RegistrationController::class,'register']); // data ins
 
 //Insert Query to DB
 Route::get('/', [DemoController::class,'index'])->name('home');
-Route::get('/customer',[CustomerController::class,'index'])->name('customer.add'); 
+Route::get('/customer',[CustomerController::class,'index'])->name('customer.add');
 Route::post('/customer',[CustomerController::class,'store']);
 Route::get('/customer/delete/{id}', [CustomerController::class,'delete'])->name('customer.delete'); // id ne hit krva mate id add kryu
 Route::get('/customer/edit/{id}', [CustomerController::class,'edit'])->name('customer.edit'); // id ne hit krva mate id add kryu
 Route::post('/customer/edit/{id}', [CustomerController::class,'edit'])->name('customer.edit'); // id ne hit krva mate id add kryu
-
 //update data mate
 Route::post('/customer/update/{id}', [CustomerController::class,'update'])->name('customer.update'); // id ne hit krva mate id add kryu
-Route::get('/customer/view',[CustomerController::class,'view'])->name('customer.view'); 
+Route::get('/customer/view',[CustomerController::class,'view'])->name('customer.view');
+Route::get('/customer/trash',[CustomerController::class,'trash']);
+Route::get('/customer/restore/{id}', [CustomerController::class,'restore'])->name('customer.restore');
+Route::get('/customer/forcedelete/{id}', [CustomerController::class,'forcedelete'])->name('customer.forcedelete'); // id ne hit krva mate id add kryu
 
 //session
 Route::get('get-all-session',function(){
@@ -113,23 +115,31 @@ Route::get('get-all-session',function(){
 Route::get('set-session',function(Request $request){
     $request->session()->put('user-name','Mayur');
     $request->session()->put('user-id','12345');
-    return redirect('get-all-session');    
+    return redirect('get-all-session');
 });
 
 //delete data using session
 Route::get('destroy-session', function(){
-    session()->forget('user-name'); // 1st method alag alag value mate 
+    session()->forget('user-name'); // 1st method alag alag value mate
     session()->forget('user-id');
     // session()->forget(['user-name','user-id']);    ---- 2nd method - eksathe
 
-    return redirect('get-all-session');    
+    return redirect('get-all-session');
 });
 
 
-Route::get('/customer/trash',[CustomerController::class,'trash']); 
-Route::get('/customer/restore/{id}', [CustomerController::class,'restore'])->name('customer.restore'); 
-Route::get('/customer/forcedelete/{id}', [CustomerController::class,'forcedelete'])->name('customer.forcedelete'); // id ne hit krva mate id add kryu
-
+// Laravel Route Grouping
+// Route::group(['prefix' =>'/customer'],function () {
+//     Route::get('/',[CustomerController::class,'index'])->name('customer.add');
+//     Route::post('/',[CustomerController::class,'store']);
+//     Route::get('delete/{id}', [CustomerController::class,'delete'])->name('customer.delete'); // id ne hit krva mate id add kryu
+//     Route::get('edit/{id}', [CustomerController::class,'edit'])->name('customer.edit'); // id ne hit krva mate id add kryu
+//     Route::post('edit/{id}', [CustomerController::class,'edit'])->name('customer.edit'); // id ne hit krva mate id add kryu
+//     Route::post('update/{id}', [CustomerController::class,'update'])->name('customer.update'); // id ne hit krva mate id add kryu
+//     Route::get('view',[CustomerController::class,'view'])->name('customer.view');
+//     Route::get('trash',[CustomerController::class,'trash']);
+//     Route::get('restore/{id}', [CustomerController::class,'restore'])->name('customer.restore');
+//     Route::get('forcedelete/{id}', [CustomerController::class,'forcedelete'])->name('customer.forcedelete'); // id ne hit krva mate id add kryu
+// });
 
 ?>
- 
