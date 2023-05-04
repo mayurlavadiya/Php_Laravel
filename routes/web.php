@@ -6,6 +6,8 @@ use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\IndexController;
+
 use Illuminate\Http\Request;
 
 
@@ -141,5 +143,7 @@ Route::get('destroy-session', function(){
 //     Route::get('restore/{id}', [CustomerController::class,'restore'])->name('customer.restore');
 //     Route::get('forcedelete/{id}', [CustomerController::class,'forcedelete'])->name('customer.forcedelete'); // id ne hit krva mate id add kryu
 // });
+
+Route::get('/data',[IndexController::class,'index']);
 
 ?>
