@@ -16,5 +16,5 @@ class Member extends Model
 
     function group(){
             return $this->hasMany('App\Models\Group','group_id','group_id'); // one to many relation so use hasMany function with 2 args
-        }
+        } 
 }
