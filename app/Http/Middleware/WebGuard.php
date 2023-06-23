@@ -13,13 +13,13 @@ class WebGuard
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
-        if(session()->has('user_id')){
+        // if(session()->has('user_id')){
             return $next($request);
-        }
-        else{
-            return redirect('no-access');
-        }
+        // }
+        // else{
+        //     return redirect('no-access');
+        // }
     }
 }

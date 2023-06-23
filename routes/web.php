@@ -7,6 +7,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\IndexController;
+use App\Http\Middleware\WebGuard;
 
 use Illuminate\Http\Request;
 
@@ -144,15 +145,20 @@ Route::get('destroy-session', function(){
 //     Route::get('forcedelete/{id}', [CustomerController::class,'forcedelete'])->name('customer.forcedelete'); // id ne hit krva mate id add kryu
 // });
 
-Route::get('/data',[IndexController::class,'index'])->middleware('guard');
-Route::get('/group',[IndexController::class,'group'])->middleware('guard');
+// Route::get('/data',[IndexController::class,'index'])->middleware('guard');
+// Route::get('/group',[IndexController::class,'group'])->middleware('guard');
+
+Route::get('/data',[IndexController::class,'index']);
+Route::get('/group',[IndexController::class,'group']);
 
 Route::get('/profile',function(){
     return "Welcome to Mayur coding";
 });
 
-Route::get('/no-access',function(){
-    return "You are not authorised to login...!";
+Route::get('/no-access', function(){
+    echo "You are not authorised to login...!";
+    die;
 });
 
 ?>
+
